@@ -36,8 +36,8 @@ def say_hello():
 def say_hello2():
     listv = []
     
-    time = str(datetime.now())
-    listv.append(time)
+    time1 = str(datetime.now())
+    listv.append(time1)
     time.sleep(1)
     
     time2 = str(datetime.now())
