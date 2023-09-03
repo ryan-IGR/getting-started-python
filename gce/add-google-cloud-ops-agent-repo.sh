@@ -192,7 +192,7 @@ or anything in the format of [MAJOR_VERSION.MINOR_VERSION.PATCH_VERSION] or [MAJ
  fi
 }
 
-handle_debian() {
+handle_ubuntu() {
   declare -a EXTRA_OPTS=()
   [[ "${VERBOSE}" == 'true' ]] && EXTRA_OPTS+=(-oDebug::pkgAcquire::Worker=1)
 
@@ -462,14 +462,14 @@ save_configuration_files() {
 
 main() {
   case "${ID:-}" in
-    debian|ubuntu) handle_debian ;;
+    ubuntu|ubuntu) handle_ubuntu ;;
     rhel|centos) handle_redhat ;;
     sles|opensuse-leap) handle_suse ;;
     *)
       # Fallback for systems lacking /etc/os-release.
-      if [[ -f /etc/debian_version ]]; then
-        ID='debian'
-        handle_debian
+      if [[ -f /etc/ubuntu_version ]]; then
+        ID='ubuntu'
+        handle_ubuntu
       elif [[ -f /etc/redhat-release ]]; then
         ID='rhel'
         handle_redhat
